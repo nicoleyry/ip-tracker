@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../styles/topsearch.scss';
 import { isIP } from 'is-ip';
 
-export default function TopSearch({searchValue, setSearchValue}) {
+export default function TopSearch({searchValue, setSearchValue, setCheckValue}) {
 	const [error, setError] = useState(null);
 
 	const isValidInput = (value) => {
@@ -12,15 +12,16 @@ export default function TopSearch({searchValue, setSearchValue}) {
 
 	const handleChange = (e) => {
 		if (!isValidInput(e.target.value)) {
-			setError('Please enter a valid IP address or domain');
+			setError(true);
 		} else {
-			setError(null);
+			setError(false);
 		}
 		setSearchValue(e.target.value);
 	};
 
 	const searchHandler = (e) => {
 		e.preventDefault();
+		setCheckValue(true);
 	};
 
 	return (
@@ -35,7 +36,7 @@ export default function TopSearch({searchValue, setSearchValue}) {
 					onClick={() => setSearchValue('')}
 				/>
 				<input className='search-btn' type='submit' value='' />
-				{error && <p className='error-msg'>{error}</p>}
+				{error && <p className='error-msg'>Please enter a valid IP address or domain</p>}
 			</form>
 		</div>
 	);
