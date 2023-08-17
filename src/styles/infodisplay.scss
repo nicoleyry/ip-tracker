@@ -1,0 +1,28 @@
+@use './variables' as var;
+
+.info-display {
+	background-color: var.$color-white;
+	height: 100px;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: repeat(4, 25%);
+	grid-template-rows: auto;
+	gap: 10px;
+	padding: 20px;
+
+	& .info-block {
+		& .title {
+			text-transform: uppercase;
+			color: var.$color-gray;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			margin-bottom: 10px;
+		}
+		& .content {
+			color: var.$color-black;
+			font-weight: 500;
+			font-size: 18px;
+		}
+	}
+}

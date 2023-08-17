@@ -1,26 +1,26 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
 import TopSearch from './components/TopSearch';
 import Map from './components/Map';
+import InfoDisplay from './components/InfoDisplay';
 import axios from 'axios';
 
 function App() {
 	const [searchValue, setSearchValue] = useState('Search for any IP address or domain');
 	const [checkValue, setCheckValue] = useState(false);
-	let dataRef = useRef(null);
+	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		if (checkValue) {
+		if (checkValue && searchValue !== '') {
 			axios
 				.get(
 					`https://geo.ipify.org/api/v2/country?apiKey=at_x9axcfyvYV2uOZWT76E1oZnUIsdYY&ipAddress=${searchValue}`
 				)
 				.then((response) => {
-					dataRef.current = response.data;
+					setData(response.data);
 				});
 
 			setCheckValue(false);
-			console.log('dataRef', dataRef.current);
 		} else {
 			return;
 		}
@@ -31,6 +31,9 @@ function App() {
 			<div className='app-container'>
 				<TopSearch searchValue={searchValue} setSearchValue={setSearchValue} setCheckValue={setCheckValue} />
 				<Map />
+			</div>
+			<div className="display-container">
+				<InfoDisplay data={data} />
 			</div>
 		</div>
 	);

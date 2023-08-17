@@ -11,6 +11,7 @@ export default function TopSearch({searchValue, setSearchValue, setCheckValue}) 
 	};
 
 	const handleChange = (e) => {
+		console.log(e.target.value);
 		if (!isValidInput(e.target.value)) {
 			setError(true);
 		} else {
@@ -21,7 +22,7 @@ export default function TopSearch({searchValue, setSearchValue, setCheckValue}) 
 
 	const searchHandler = (e) => {
 		e.preventDefault();
-		setCheckValue(true);
+		(e.target[0].value === '') ? setCheckValue(false) : setCheckValue(true);
 	};
 
 	return (

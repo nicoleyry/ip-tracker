@@ -37,6 +37,7 @@
 		}
 
 		& .search-btn {
+			cursor: pointer;
 			background: var.$color-black url('../assets/images/icon-arrow.svg');
 			background-repeat: no-repeat;
 			background-position: center;

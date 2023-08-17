@@ -19,12 +19,12 @@
 		position: relative;
 		z-index: 1;
 	}
-	// & .display-container {
-	// 	width: 65%;
-	// 	position: fixed;
-	// 	z-index: 2;
-	// 	transform: translate(-50%, -50%);
-	// 	top: 40%;
-	// 	left: 50%;
-	// }
+	& .display-container {
+		width: 65%;
+		position: fixed;
+		z-index: 2;
+		transform: translate(-50%, -50%);
+		top: 40%;
+		left: 50%;
+	}
 }
