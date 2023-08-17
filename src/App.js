@@ -14,7 +14,7 @@ function App() {
 		if (checkValue && searchValue !== '') {
 			axios
 				.get(
-					`https://geo.ipify.org/api/v2/country?apiKey=at_x9axcfyvYV2uOZWT76E1oZnUIsdYY&ipAddress=${searchValue}`
+					`https://geo.ipify.org/api/v2/country,city?apiKey=at_x9axcfyvYV2uOZWT76E1oZnUIsdYY&ipAddress=${searchValue}`
 				)
 				.then((response) => {
 					setData(response.data);
@@ -32,7 +32,7 @@ function App() {
 				<TopSearch searchValue={searchValue} setSearchValue={setSearchValue} setCheckValue={setCheckValue} />
 				<Map />
 			</div>
-			<div className="display-container">
+			<div className='display-container'>
 				<InfoDisplay data={data} />
 			</div>
 		</div>

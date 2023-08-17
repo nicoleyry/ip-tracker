@@ -1,15 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/infodisplay.scss';
 
 export default function InfoDisplay({data}) {
+	const [info, setInfo] = useState({
+		ip: '-',
+		location: '-',
+		timezone: '-',
+		isp: '-',
+	});
 
 	useEffect(() => {
 		if(data !== null) {
-			console.log(data);
+			setInfo({
+				ip: data.ip,
+				location: data.location.region.concat(', ', data.location.country),
+				timezone: 'UTC'.concat(' ', data.location.timezone),
+				isp: data.isp,
+			});
 		}
 	}, [data]);
 
-	const InfoBlock = ({ title, content }) => {
+	const InfoBlock = ({ title, content }) => {		
 		return (
 			<div className='info-block'>
 				<p className='title'>{title}</p>
@@ -20,10 +31,10 @@ export default function InfoDisplay({data}) {
 
 	return (
 		<div className="info-display">
-			<InfoBlock title={'IP Address'} content={'192.212.174.101'} />
-			<InfoBlock title={'Location'} content={'Brooklyn, NY 10001'} />
-			<InfoBlock title={'Timezone'} content={'UTC -05:00'} />
-			<InfoBlock title={'ISP'} content={'SpaceX Starlink'} />
+			<InfoBlock title={'IP Address'} content={info.ip} />
+			<InfoBlock title={'Location'} content={info.location} />
+			<InfoBlock title={'Timezone'} content={info.timezone} />
+			<InfoBlock title={'ISP'} content={info.isp} />
 		</div>
 	);
 };

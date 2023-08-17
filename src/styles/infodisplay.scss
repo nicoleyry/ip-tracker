@@ -2,15 +2,21 @@
 
 .info-display {
 	background-color: var.$color-white;
-	height: 100px;
+	min-height: 100px;
+	height: auto;
 	border-radius: 10px;
-	display: grid;
-	grid-template-columns: repeat(4, 25%);
-	grid-template-rows: auto;
+	display: flex;
 	gap: 10px;
-	padding: 20px;
+	padding: 30px;
 
 	& .info-block {
+		flex-grow: 1;
+		
+		&:not(:last-child) {
+			padding-right: 10px;
+			border-right: 1px solid var.$color-gray;
+		}
+
 		& .title {
 			text-transform: uppercase;
 			color: var.$color-gray;
