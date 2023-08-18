@@ -9,6 +9,7 @@ function App() {
 	const [searchValue, setSearchValue] = useState('Search for any IP address or domain');
 	const [checkValue, setCheckValue] = useState(false);
 	const [data, setData] = useState(null);
+	const [position, setPosition] = useState([51.505, -0.09]);
 
 	useEffect(() => {
 		if (checkValue && searchValue !== '') {
@@ -30,7 +31,7 @@ function App() {
 		<div className='App'>
 			<div className='app-container'>
 				<TopSearch searchValue={searchValue} setSearchValue={setSearchValue} setCheckValue={setCheckValue} />
-				<Map />
+				<Map data={data} position={position} setPosition={setPosition}/>
 			</div>
 			<div className='display-container'>
 				<InfoDisplay data={data} />
