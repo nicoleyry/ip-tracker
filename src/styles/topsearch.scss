@@ -3,6 +3,7 @@
 .top-search {
 	background-color: var.$color-dark-gray;
 	background-image: url('../assets/images/pattern-bg-desktop.png');
+	background-size: cover;
 	padding: 20px;
 
 	& .title {
@@ -13,10 +14,17 @@
 	}
 	& .search-container {
 		margin: 30px auto;
-		width: 500px;
-
+		width: 90vw;
+		
 		$height: 50px;
 		$border-radius: 10px;
+		
+		@media screen and (min-width: var.$breakpoint-s) {
+			width: 70vw;
+		}
+		@media screen and (min-width: var.$breakpoint-m) {
+			width: 50vw;
+		}
 
 		& .search-input {
 			width: 90%;
@@ -28,27 +36,41 @@
 			border-top-left-radius: $border-radius;
 			border-bottom-left-radius: $border-radius;
 			border: none;
-			font-size: 18px;
-			color: var.$color-gray;
+			font-size: 13px;
+			color: var.$color-black;
+
+			@media screen and (min-width: var.$breakpoint-s) {
+				font-size: 18px;
+			}
 
 			&:focus {
 				outline: none;
+			}
+
+			&::placeholder {
+				color: var.$color-gray;
 			}
 		}
 
 		& .search-btn {
 			cursor: pointer;
-			background: var.$color-black url('../assets/images/icon-arrow.svg');
-			background-repeat: no-repeat;
-			background-position: center;
+			background: no-repeat center var.$color-black url('../assets/images/icon-arrow.svg');
 			height: $height;
 			line-height: $height;
 			margin: 0;
 			padding: 3px;
-			width: $height;
+			width: 10%;
 			border-top-right-radius: $border-radius;
 			border-bottom-right-radius: $border-radius;
-			border: none;
+			border: 0 var.$color-gray solid;
+
+			&:hover {
+				background: no-repeat center var.$color-dark-gray url('../assets/images/icon-arrow.svg');
+			}
+			&:active {
+				background: no-repeat center var.$color-dark-gray url('../assets/images/icon-arrow.svg');
+				border: 1px var.$color-gray solid;
+			}
 		}
 
 		& .error-msg {

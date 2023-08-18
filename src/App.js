@@ -6,7 +6,7 @@ import InfoDisplay from './components/InfoDisplay';
 import axios from 'axios';
 
 function App() {
-	const [searchValue, setSearchValue] = useState('Search for any IP address or domain');
+	const [searchValue, setSearchValue] = useState('');
 	const [checkValue, setCheckValue] = useState(false);
 	const [data, setData] = useState(null);
 	const [position, setPosition] = useState([51.505, -0.09]);

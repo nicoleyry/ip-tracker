@@ -1,3 +1,4 @@
+@use './styles/variables' as var;
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
 * {
@@ -24,7 +25,11 @@
 		position: fixed;
 		z-index: 2;
 		transform: translate(-50%, -50%);
-		top: 40%;
+		top: 45%;
 		left: 50%;
+
+		@media screen and (min-width: var.$breakpoint-m) {
+			top: 40%;
+		}
 	}
 }

@@ -17,13 +17,12 @@ const LocationMaker = ({ position, setPosition }) => {
 		map.locate().on('locationfound', function (e) {
 			setPosition([e.latlng.lat, e.latlng.lng]);
 			map.flyTo(e.latlng, map.getZoom());
-			console.log(e);
 		});
 	}, [map, setPosition]);
 
 	return (
 		<Marker position={position} icon={locationIcon}>
-			<Popup>You are here: <br />[{position[0]}, {position[1]}]</Popup>
+			<Popup>You are here: <br />[<b>{position[0]}</b>, <b>{position[1]}</b>]</Popup>
 		</Marker>
 	);
 };
@@ -44,7 +43,7 @@ export default function Map({ data, position, setPosition }) {
 	}, [map, position]);
 
 	return (
-		<MapContainer center={position} zoom={zoom} scrollWheelZoom={true} ref={setMap}>
+		<MapContainer center={position} zoomControl={false} zoom={zoom} scrollWheelZoom={true} ref={setMap}>
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
