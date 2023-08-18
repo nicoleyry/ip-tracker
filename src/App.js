@@ -13,11 +13,11 @@ function App() {
 	const [position, setPosition] = useState([51.505, -0.09]);
 	const apiURL = 'https://geo.ipify.org/api/v2/country,city';
 	const apiKey = 'at_x9axcfyvYV2uOZWT76E1oZnUIsdYY';
-	let searchParam = '';
+	const [searchParam, setSearchParam] = useState('');
 
 	useEffect(() => {
 		if (checkValue && searchValue !== '') {
-			isIP(searchValue) ? (searchParam = 'ipAddress') : (searchParam = 'domain');
+			isIP(searchValue) ? setSearchParam('ipAddress') : setSearchParam('domain');
 
 			axios.get(`${apiURL}?apiKey=${apiKey}&${searchParam}=${searchValue}`).then((response) => {
 				setData(response.data);
@@ -27,7 +27,7 @@ function App() {
 		} else {
 			return;
 		}
-	}, [checkValue, searchValue]);
+	}, [checkValue, searchValue, searchParam, setSearchParam]);
 
 	return (
 		<div className='App'>
