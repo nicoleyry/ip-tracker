@@ -4,22 +4,24 @@ import TopSearch from './components/TopSearch';
 import Map from './components/Map';
 import InfoDisplay from './components/InfoDisplay';
 import axios from 'axios';
+import { isIP } from 'is-ip';
 
 function App() {
 	const [searchValue, setSearchValue] = useState('');
 	const [checkValue, setCheckValue] = useState(false);
 	const [data, setData] = useState(null);
 	const [position, setPosition] = useState([51.505, -0.09]);
+	const apiURL = 'https://geo.ipify.org/api/v2/country,city';
+	const apiKey = 'at_x9axcfyvYV2uOZWT76E1oZnUIsdYY';
+	let searchParam = '';
 
 	useEffect(() => {
 		if (checkValue && searchValue !== '') {
-			axios
-				.get(
-					`https://geo.ipify.org/api/v2/country,city?apiKey=at_x9axcfyvYV2uOZWT76E1oZnUIsdYY&ipAddress=${searchValue}`
-				)
-				.then((response) => {
-					setData(response.data);
-				});
+			isIP(searchValue) ? (searchParam = 'ipAddress') : (searchParam = 'domain');
+
+			axios.get(`${apiURL}?apiKey=${apiKey}&${searchParam}=${searchValue}`).then((response) => {
+				setData(response.data);
+			});
 
 			setCheckValue(false);
 		} else {
@@ -31,7 +33,7 @@ function App() {
 		<div className='App'>
 			<div className='app-container'>
 				<TopSearch searchValue={searchValue} setSearchValue={setSearchValue} setCheckValue={setCheckValue} />
-				<Map data={data} position={position} setPosition={setPosition}/>
+				<Map data={data} position={position} setPosition={setPosition} />
 			</div>
 			<div className='display-container'>
 				<InfoDisplay data={data} />

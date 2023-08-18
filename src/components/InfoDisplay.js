@@ -13,7 +13,7 @@ export default function InfoDisplay({data}) {
 		if(data !== null) {
 			setInfo({
 				ip: data.ip,
-				location: `${data.location.region}, ${data.location.country} ${data.location.postalCode}`,
+				location: `${data.location.region}${data.location.region ? ',' : ''} ${data.location.country} ${data.location.postalCode}`,
 				timezone: `UTC ${data.location.timezone}`,
 				isp: data.isp,
 			});

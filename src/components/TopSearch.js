@@ -2,15 +2,16 @@ import { useState } from 'react';
 import '../styles/topsearch.scss';
 import { isIP } from 'is-ip';
 
-export default function TopSearch({searchValue, setSearchValue, setCheckValue}) {
+export default function TopSearch({ searchValue, setSearchValue, setCheckValue }) {
 	const [error, setError] = useState(null);
 
 	const isValidInput = (value) => {
-		let re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/); 
+		let re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/);
 		return isIP(value) || value.match(re);
 	};
 
 	const handleChange = (e) => {
+		setCheckValue(false);
 		if (!isValidInput(e.target.value)) {
 			setError(true);
 		} else {
@@ -21,12 +22,12 @@ export default function TopSearch({searchValue, setSearchValue, setCheckValue}) 
 
 	const searchHandler = (e) => {
 		e.preventDefault();
-		(e.target[0].value === '') ? setCheckValue(false) : setCheckValue(true);
+		e.target[0].value === '' ? setCheckValue(false) : setCheckValue(true);
 	};
 
 	const keyDownHandler = (key) => {
-		if(key.code === 'Enter') {
-			(key.target.value === '') ? setCheckValue(false) : setCheckValue(true);
+		if (key.code === 'Enter') {
+			key.target.value === '' ? setCheckValue(false) : setCheckValue(true);
 		}
 	};
 
