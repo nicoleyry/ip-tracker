@@ -38,6 +38,10 @@ function App() {
 			<div className='display-container'>
 				<InfoDisplay data={data} />
 			</div>
+			<div class="attribution">
+				Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+				Coded by <a href="https://www.nicoleyry.com/">Nicole Yang</a>.
+			</div>
 		</div>
 	);
 }

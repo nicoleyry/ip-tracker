@@ -32,4 +32,17 @@
 			top: 40%;
 		}
 	}
+	& .attribution {
+		position: absolute;
+		transform: translateX(-50%);
+		left: 50%;
+		bottom: 5px;
+		font-size: 11px;
+		text-align: center;
+		z-index: 1;
+	}
+	& .attribution a {
+		color: hsl(228, 45%, 44%);
+		text-decoration: none;
+	}
 }
