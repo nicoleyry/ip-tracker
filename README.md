@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0/hub?share=true](hhttps://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0/hub?share=true)
+- Solution URL: [https://www.frontendmentor.io/solutions/responsive-ip-tracker-by-using-react-axios-and-sass-RH9RRsio9p](https://www.frontendmentor.io/solutions/responsive-ip-tracker-by-using-react-axios-and-sass-RH9RRsio9p)
 - Live Site URL: [https://nicoleyry-ip-tracker.netlify.app/](https://nicoleyry-ip-tracker.netlify.app/)
 
 ## My process
